@@ -32,6 +32,7 @@ module SearchMethods
           when "contains"
             az_title_klass.search {
               keywords query, :fields => [:title]
+              order_by(:score, :desc)
               order_by(:title_sort, :asc)
               paginate(:page => page, :per_page => 20)
             }
